@@ -20,3 +20,6 @@ This is a data pipeline created for streaming state-wise electricity data from A
 - Replace the IP address here with your instance's IP address.
 - Run the initial_batch.py script to fetch the first batch of data into your database.
 - Run the producer and consumer scripts for updates.
+
+**Acknowledgement: I do not own the data source. AEMO uses this data from their wonderful dashboard. Link below.**
+https://aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/data-dashboard-nem
