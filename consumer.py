@@ -13,13 +13,8 @@ def consume_and_store_data():
     The 'REGION' field from each record is used as the table name to store the data in the database.
     The data is then stored in a PostgreSQL database using SQLAlchemy.
 
-    Args:
-        None
-
-    Returns:
-        None
     """
-    consumer = KafkaConsumer('aemo_pipeline', bootstrap_servers='44.204.30.120:9092', value_deserializer=lambda v: loads(v.decode('utf-8')))
+    consumer = KafkaConsumer('5min_data', bootstrap_servers='3.87.86.209:9092', value_deserializer=lambda v: loads(v.decode('utf-8')))
     db_url = os.getenv("DB_URL")
     engine = create_engine(db_url)
 
@@ -29,3 +24,5 @@ def consume_and_store_data():
         state = record['REGION']
         print(state)
         df.to_sql(f'electricity_data_{state}', con=engine, if_exists='append', index=False)
+
+consume_and_store_data()
